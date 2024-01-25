@@ -38,4 +38,16 @@ jobs:
         env:
           DOCKER_CLI_ACI: 1
 
-        
+      - name: trivy scan
+        run: trviy image ashish/techdome:latest > trivyimage.txt
+
+
+      
+         run:
+
+  deploy:
+   needs: build--analyze-scan
+   runs-on: [self-hosted]
+   steps:
+       - name: docker pull image
+         run: docker pull ashish/techdome:latest
