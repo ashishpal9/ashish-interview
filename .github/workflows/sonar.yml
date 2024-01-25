@@ -31,10 +31,10 @@ jobs:
       - name: Docker build and push
         run: |
           # Run commands to build and push Docker images
-          docker build -t techdome .
-          docker tag techdome ashish/techdome:latest
+          docker build -t --name techdome1 .
+          docker tag techdome1 ashish/techdome:latest
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker push ashish/techdome:latest
+          docker push ashish/techdome1:latest
         env:
           DOCKER_CLI_ACI: 1
 
